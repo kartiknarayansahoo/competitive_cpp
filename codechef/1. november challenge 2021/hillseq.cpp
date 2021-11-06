@@ -18,5 +18,8 @@ int main()
 }
 void solve()
 {
+	int n;
+	int *a = new int[n];
 
+	delete[] a;
 }
