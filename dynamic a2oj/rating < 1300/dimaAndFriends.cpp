@@ -4,9 +4,9 @@ void solve();
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);	
+    cin.tie(NULL);
  
-#ifndef ONLINE_JUDGE		
+#ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
@@ -24,28 +24,20 @@ int main()
 }
 void solve()
 {
-	int n;
+	int n; 
 	cin>>n;
-		
 
 	int x;
-	cin>>x;
-
-	int max = x;
-	int min = x;
-	int count=0;
-	
-	for (int i = 0; i < n-1; ++i)
-	{
+	int totalfingers = 0;
+	for (int i = 0; i < n; ++i){
 		cin>>x;
-		if(x>max){
-			max=x;
+		totalfingers+=x;
+	}
+	int count=0;
+	for (int i = 1; i <= 5; ++i){
+		if((totalfingers+i)%(n+1)!=1)
 			count++;
-		}
-		else if(x<min){
-			min = x;
-			count++;
-		}
 	}
 	cout<<count;
+
 }

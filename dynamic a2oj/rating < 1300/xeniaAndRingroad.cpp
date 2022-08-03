@@ -4,9 +4,9 @@ void solve();
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);	
+    cin.tie(NULL);
  
-#ifndef ONLINE_JUDGE		
+#ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
@@ -24,28 +24,19 @@ int main()
 }
 void solve()
 {
-	int n;
-	cin>>n;
-		
+	long long n,m;
+	cin>>n>>m;
+	long long a[m];
+	for (int i = 0; i < m; ++i)
+		cin>>a[i];
 
-	int x;
-	cin>>x;
-
-	int max = x;
-	int min = x;
-	int count=0;
-	
-	for (int i = 0; i < n-1; ++i)
+	long long time=a[0]-1;
+	for (int i = 1; i < m; ++i)
 	{
-		cin>>x;
-		if(x>max){
-			max=x;
-			count++;
-		}
-		else if(x<min){
-			min = x;
-			count++;
-		}
+		if(a[i]<a[i-1])
+			time+=n-a[i-1]+a[i];
+		else
+			time+=a[i]-a[i-1];
 	}
-	cout<<count;
+	cout<<time;
 }

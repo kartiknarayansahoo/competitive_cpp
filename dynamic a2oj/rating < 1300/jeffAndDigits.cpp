@@ -4,9 +4,9 @@ void solve();
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);	
+    cin.tie(NULL);
  
-#ifndef ONLINE_JUDGE		
+#ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
@@ -26,26 +26,26 @@ void solve()
 {
 	int n;
 	cin>>n;
-		
-
+	map<int,int> fiveZerofreq;
+	fiveZerofreq[0]=0;
+	fiveZerofreq[5]=0;
 	int x;
-	cin>>x;
-
-	int max = x;
-	int min = x;
-	int count=0;
-	
-	for (int i = 0; i < n-1; ++i)
-	{
-		cin>>x;
-		if(x>max){
-			max=x;
-			count++;
-		}
-		else if(x<min){
-			min = x;
-			count++;
-		}
+	while(cin>>x){
+		fiveZerofreq[x]++;
 	}
-	cout<<count;
+
+	if(fiveZerofreq[0]==0){
+		cout<<-1;
+		return;
+	}
+	int numFive=fiveZerofreq[5]/9*9; //number of 5 to be printed
+
+	if(numFive!=0){
+		for (int i = 0; i < numFive; ++i)
+			cout<<5;
+		for (int i = 0; i < fiveZerofreq[0]; ++i)
+			cout<<0;
+	}
+	else
+		cout<<0;
 }

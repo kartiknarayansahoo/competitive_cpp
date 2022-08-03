@@ -4,9 +4,9 @@ void solve();
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);	
+    cin.tie(NULL);
  
-#ifndef ONLINE_JUDGE		
+#ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
@@ -26,26 +26,15 @@ void solve()
 {
 	int n;
 	cin>>n;
-		
-
-	int x;
-	cin>>x;
-
-	int max = x;
-	int min = x;
-	int count=0;
-	
-	for (int i = 0; i < n-1; ++i)
-	{
-		cin>>x;
-		if(x>max){
-			max=x;
-			count++;
-		}
-		else if(x<min){
-			min = x;
-			count++;
-		}
+	vector<pair<int,int>> distNum(n);
+	for (int i = 0; i < n; ++i){ //n
+		cin>>distNum[i].first;
+		distNum[i].second=i+1;
 	}
-	cout<<count;
+	sort(distNum.begin(),distNum.end()); //nlogn
+	if (distNum[0].first!=distNum[1].first)
+		cout<<distNum[0].second;
+	else
+		cout<<"Still Rozdil";
+
 }

@@ -4,9 +4,9 @@ void solve();
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);	
+    cin.tie(NULL);
  
-#ifndef ONLINE_JUDGE		
+#ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
@@ -24,28 +24,16 @@ int main()
 }
 void solve()
 {
-	int n;
-	cin>>n;
-		
-
-	int x;
-	cin>>x;
-
-	int max = x;
-	int min = x;
-	int count=0;
-	
-	for (int i = 0; i < n-1; ++i)
-	{
-		cin>>x;
-		if(x>max){
-			max=x;
-			count++;
-		}
-		else if(x<min){
-			min = x;
-			count++;
+	map<char,int> pile;
+	char c;
+	while(cin>>c){
+		pile[c]++;
+	}
+	for (auto itr = pile.begin(); itr!=pile.end(); ++itr){
+		if(itr->second%2!=0){
+			cout<<"NO";
+			return;
 		}
 	}
-	cout<<count;
+	cout<<"YES";
 }

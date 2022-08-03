@@ -4,9 +4,9 @@ void solve();
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);	
+    cin.tie(NULL);
  
-#ifndef ONLINE_JUDGE		
+#ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
@@ -26,26 +26,19 @@ void solve()
 {
 	int n;
 	cin>>n;
-		
+	int days[7];
+	for (int i = 0; i < 7; ++i)
+		cin>>days[i];
 
-	int x;
-	cin>>x;
-
-	int max = x;
-	int min = x;
-	int count=0;
-	
-	for (int i = 0; i < n-1; ++i)
-	{
-		cin>>x;
-		if(x>max){
-			max=x;
-			count++;
-		}
-		else if(x<min){
-			min = x;
-			count++;
-		}
+	int i=0;
+	int ans=0;
+	while(n>0){
+		n-=days[i];
+		ans=i;
+		if(i==6)
+			i=0;
+		else
+			i++;
 	}
-	cout<<count;
+	cout<<ans+1;
 }
